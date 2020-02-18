@@ -52,8 +52,8 @@ export function fetchFunc() {
   // tslint:disable-next-line:no-any
   return (url: string, options: any) => {
     options = options || {};
-    const dataType = url.match(TEXT_FILE_EXTS) ? 'text' : 'arraybuffer';
-
+    //const dataType = url.match(TEXT_FILE_EXTS) ? 'text' : 'arraybuffer';
+    const dataType = 'text'
     return new Promise((resolve, reject) => {
       wx.request({
         url,
@@ -69,7 +69,7 @@ export function fetchFunc() {
   };
 }
 
-export function setWechatFetch(debug=false) {
+export function setWechatFetch(debug = false) {
   // tslint:disable-next-line:no-any
   const typedGlobal = global as any;
   if (typeof typedGlobal.fetch !== 'function') {

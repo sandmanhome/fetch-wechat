@@ -1,3 +1,5 @@
+# skip arraybuffer support
+
 # fetch-wechat
 Fetch polyfill for WeChat mini program platform to work with
 [TensorFlow.js](https://github.com/tensorflow/tfjs).

@@ -1,6 +1,6 @@
 {
-  "name": "fetch-wechat",
-  "version": "0.0.3",
+  "name": "icbsc-fetch.js",
+  "version": "0.0.4",
   "description": "browser fetch polyfill for wechat mini program platform",
   "main": "dist/index.js",
   "jsnext:main": "dist/fetch_wechat.esm.js",
@@ -10,7 +10,7 @@
   "jsdelivr": "dist/fetch_wechat.min.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/pyu10055/fetch-wechat.git"
+    "url": "https://github.com/sandmanhome/fetch-wechat.git"
   },
   "license": "MIT",
   "devDependencies": {
@@ -28,7 +28,7 @@
     "karma-firefox-launcher": "~1.1.0",
     "karma-jasmine": "~2.0.1",
     "karma-typescript": "~4.0.0",
-    "rimraf": "~2.6.2",
+    "rimraf": "^2.6.3",
     "rollup": "~0.58.2",
     "rollup-plugin-cleanup": "~3.0.0",
     "rollup-plugin-commonjs": "~9.1.3",
