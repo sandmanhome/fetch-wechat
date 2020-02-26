@@ -23,7 +23,7 @@ export function parseResponse(url: string, res: wx.RequestSuccessCallbackResult)
       try {
         json = JSON.parse(res.data);
       } catch (err) {
-        Promise.reject(err);
+        return Promise.reject(err);
       }
       return Promise.resolve(json);
     },
