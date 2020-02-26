@@ -1,4 +1,3 @@
-export const TEXT_FILE_EXTS = /\.(txt|json|html|txt|csv)/;
 export interface GlobalWithFetch {
   fetch: Function;
 }
@@ -24,7 +23,7 @@ export function parseResponse(url: string, res: wx.RequestSuccessCallbackResult)
       try {
         json = JSON.parse(res.data);
       } catch (err) {
-        console.error(err);
+        Promise.reject(err);
       }
       return Promise.resolve(json);
     },
@@ -52,16 +51,14 @@ export function fetchFunc() {
   // tslint:disable-next-line:no-any
   return (url: string, options: any) => {
     options = options || {};
-    //const dataType = url.match(TEXT_FILE_EXTS) ? 'text' : 'arraybuffer';
-    const dataType = 'text'
     return new Promise((resolve, reject) => {
       wx.request({
         url,
         method: options.method || 'GET',
         data: options.body,
         header: options.headers,
-        dataType,
-        responseType: dataType,
+        dataType: options.dataType || 'text',
+        responseType: options.responseType || 'text',
         success: (resp) => resolve(parseResponse(url, resp)),
         fail: (err) => reject(err)
       });
