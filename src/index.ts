@@ -11,6 +11,7 @@ export function parseResponse(url: string, res: wx.RequestSuccessCallbackResult)
     ok: ((res.statusCode / 200) | 0) === 1, // 200-299
     status: res.statusCode,
     statusText: res.statusCode,
+    body: res.data,
     url,
     clone: () => parseResponse(url, res),
     text: () =>
