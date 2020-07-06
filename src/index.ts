@@ -1,3 +1,5 @@
+const Readable = require('readable-stream-miniprogram').Readable;
+
 export interface GlobalWithFetch {
   fetch: Function;
 }
@@ -7,11 +9,21 @@ export function parseResponse(url: string, res: wx.RequestSuccessCallbackResult)
     map[key.toLowerCase()] = header[key];
     return map;
   }, {});
+
+
+  var body = new Readable();
+  if (typeof res.data === "string") {
+    body.push(res.data)
+  } else if (typeof res.data === "object") {
+    body.push(res.data.toString())
+  }
+  body.push(null)
+
   return {
     ok: ((res.statusCode / 200) | 0) === 1, // 200-299
     status: res.statusCode,
     statusText: res.statusCode,
-    body: res.data,
+    body,
     url,
     clone: () => parseResponse(url, res),
     text: () =>
@@ -29,7 +41,11 @@ export function parseResponse(url: string, res: wx.RequestSuccessCallbackResult)
       return Promise.resolve(json);
     },
     arrayBuffer: () => {
-      return Promise.resolve(res.data);
+      //if (typeof res.data != "object") {
+      //  return Promise.reject('data not arrayBuffer')
+      //} else {
+        return Promise.resolve(res.data);
+      //}
     },
     headers: {
       keys: () => Object.keys(header),
