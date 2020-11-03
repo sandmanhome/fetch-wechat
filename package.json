@@ -1,6 +1,6 @@
 {
   "name": "icbsc-fetch.js",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "description": "browser fetch polyfill for wechat mini program platform",
   "main": "dist/index.js",
   "jsnext:main": "dist/fetch_wechat.esm.js",
@@ -47,5 +47,8 @@
     "publish-local": "yarn build-npm && yalc push",
     "test": "karma start",
     "lint": "tslint -p . -t verbose"
+  },
+  "dependencies": {
+    "buffer": "^5.7.0"
   }
 }

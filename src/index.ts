@@ -1,4 +1,5 @@
 const Readable = require('readable-stream-miniprogram').Readable;
+const Buffer = require('buffer').Buffer;
 
 export interface GlobalWithFetch {
   fetch: Function;
@@ -15,7 +16,7 @@ export function parseResponse(url: string, res: wx.RequestSuccessCallbackResult)
   if (typeof res.data === "string") {
     body.push(res.data)
   } else if (typeof res.data === "object") {
-    body.push(res.data.toString())
+    body.push(new Buffer(res.data))
   }
   body.push(null)
 
