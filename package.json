@@ -1,6 +1,6 @@
 {
   "name": "icbsc-fetch.js",
-  "version": "0.0.9",
+  "version": "0.0.10",
   "description": "browser fetch polyfill for wechat mini program platform",
   "main": "dist/index.js",
   "jsnext:main": "dist/fetch_wechat.esm.js",
